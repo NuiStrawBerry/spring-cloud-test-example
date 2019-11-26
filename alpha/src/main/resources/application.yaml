@@ -1,0 +1,43 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: service-alpha
+  cloud:
+    consul:
+      ribbon:
+        enabled: true
+#      host: 192.168.50.116
+      discovery:
+        health-check-interval: 30s
+        prefer-ip-address: true
+        enabled: true
+        health-check-path: /health
+#        server-list-query-tags:
+
+
+        tags: profile=alpha
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/suser?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=UTC
+    username: root
+    password: jonas
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+  zipkin:
+#    base-url: http://192.168.50.116:9411
+    base-url: http://127.0.0.1:9411
+    locator:
+      discovery:
+        enabled: true
+  sleuth:
+    sampler:
+      probability: 1.0
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:com.jonas.alpha.mapper/*.xml
+  type-aliases-package: com.jonas.alpha.model

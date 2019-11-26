@@ -1,0 +1,37 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: service-delta
+  cloud:
+
+    consul:
+#      host: 192.168.50.116
+#      host: 192.168.50.116
+      discovery:
+        health-check-interval: 3s
+        prefer-ip-address: true
+        enabled: false
+        health-check-path: /health
+        server-list-query-tags:
+#          profile: alpha
+          service-alpha: profile=alpha
+        default-query-tag:
+          profile: beta
+  zipkin:
+#    base-url: http://192.168.50.116:9411
+    base-url: http://127.0.0.1:9411
+    locator:
+      discovery:
+        enabled: true
+  sleuth:
+    sampler:
+      probability: 1.0
+
+ribbon:
+  http:
+    client:
+      enabled: false
+  okhttp:
+    enabled: true

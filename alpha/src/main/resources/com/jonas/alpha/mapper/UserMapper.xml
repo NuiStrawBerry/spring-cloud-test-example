@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jonas.alpha.mapper.UserMapper">
+
+
+
+
+<select id="getUserByname" resultType="com.jonas.alpha.model.User">
+  select id as userId,username,password,salt,locked from sys_users where username=#{username};
+</select>
+
+<select id="getUserRoleByname" resultType="com.jonas.alpha.model.Role">
+  SELECT r.role FROM sys_users u
+    LEFT JOIN sys_user_roles b on u.id=b.user_id
+    LEFT JOIN sys_roles r on r.id=b.role_id
+    where username=#{username}
+</select>
+
+</mapper>

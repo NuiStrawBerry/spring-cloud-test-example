@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jonas.one.mapper.UserMapper">
+
+    <select id="getPasswordByUserId" resultType="String" parameterType="AuthQuery">
+        select id from t_auth_user where access_key=#{accessKey} and secret_key=#{secretKey}
+    </select>
+
+<!--    <select id="getUserByUserId" resultType="User">-->
+<!--        select id,username,password,salt,locked from sys_users where username=#{userName}-->
+<!--    </select>-->
+
+
+<!--    <select id="getUsers" resultType="User">-->
+<!--        select id,username,`password` ,salt, locked from shiro.sys_users-->
+<!--    </select>-->
+
+<!--    <select id="getUsersno" resultType="User">-->
+<!--        select id,username,`password` ,salt, locked from shiro.sys_users-->
+<!--    </select>-->
+
+<!--    <insert id="addUser" parameterType="User">-->
+<!--        INSERT INTO sys_users (username,password,salt,locked) VALUE (#{userName},#{password},#{salt},0)-->
+<!--    </insert>-->
+
+<!--    <delete id="deleteUser" parameterType="String">-->
+<!--        DELETE FROM sys_users WHERE id=#{userId}-->
+<!--    </delete>-->
+
+<!--    <select id="getUserRoles" parameterType="Integer" resultType="Role">-->
+<!--        select sr.id,sr.role,sr.description ,-->
+<!--        case when sur.role_id is null then 0 else 1 end as ischecked from sys_roles sr-->
+<!--        left join (select * from sys_users_roles where user_id = #{userId}) sur on sur.role_id=sr.id-->
+<!--    </select>-->
+
+<!--    <insert id="userAddRole" parameterType="Integer">-->
+<!--        INSERT INTO sys_users_roles VALUE (#{userId},#{roleId})-->
+<!--    </insert>-->
+
+<!--    <delete id="userDeleteRole" parameterType="Integer">-->
+<!--        DELETE FROM sys_users_roles WHERE user_id=#{userId} and role_id=#{roleId}-->
+<!--    </delete>-->
+
+</mapper>

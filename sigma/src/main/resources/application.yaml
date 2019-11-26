@@ -1,0 +1,18 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: service-sigma
+  cloud:
+    consul:
+#      host: 192.168.50.116
+      discovery:
+        health-check-interval: 3s
+        prefer-ip-address: true
+        enabled: false
+        health-check-path: /health
+
+zipkin:
+    #    base-url: http://192.168.50.116:9411
+  base-url: http://127.0.0.1:9411

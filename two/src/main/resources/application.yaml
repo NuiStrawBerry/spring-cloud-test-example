@@ -1,0 +1,14 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: service-two
+  cloud:
+    consul:
+#      host: 192.168.50.116
+      discovery:
+        health-check-interval: 30s
+        prefer-ip-address: true
+        enabled: true
+        health-check-path: /health

@@ -1,0 +1,33 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
+      idle-timeout: 6000000
+      connection-timeout: 30000
+      max-lifetime: 1000000
+    url: jdbc:mysql://localhost:3306/shiro-oauth2?characterEncoding=UTF-8&characterSetResults=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: jonas
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: service-one
+  cloud:
+    consul:
+#      host: 192.168.50.116
+      discovery:
+        health-check-interval: 30s
+        prefer-ip-address: true
+        enabled: true
+        health-check-path: /health
+
+mybatis:
+  type-aliases-package: com.jonas.one.model
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 30
